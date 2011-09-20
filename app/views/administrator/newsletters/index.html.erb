@@ -1,0 +1,17 @@
+<div class="page_header">
+	<h1>Cadastros no newsletter</h1>
+</div>
+
+<div class="inside filtros">
+    <%= form_tag('/administrator/newsletters/index', :remote => true, :method => :get) do %>
+	    <div class="field">
+		    <%= label_tag :email, 'E-mail' %>
+		    <%= text_field_tag :email, @filtros[:email] %>
+		    <%= submit_tag "Buscar" %>
+	    </div>
+    <% end %>
+</div>
+
+<div class="inside" id="newsletters-index">
+	<%= render 'newsletters' %>
+</div>

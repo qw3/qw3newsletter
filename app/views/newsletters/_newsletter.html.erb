@@ -1,0 +1,28 @@
+<%= javascript_include_tag 'qw3newsletters' %>
+
+<div class="modulo newsletter">
+	<h3>Newsletter</h3>
+	
+	<div class="inside">
+	
+	<%= form_tag '/newsletters/create', :remote => true, :id => 'form-newsletter' do%>
+
+		<div class="field">
+			<%= text_field_tag :newsletter_nome, 'Seu nome:', 
+				:onclick => "if(this.value == 'Seu nome:') this.value=''",
+				:onblur => "if(this.value == '') this.value='Seu nome:'" %>
+		</div>
+		<div class="field">	
+			<%= text_field_tag :newsletter_email,	'Seu email:', 
+					:onclick => "if(this.value == 'Seu email:') this.value=''",
+					:onblur => "if(this.value == '') this.value='Seu email:'" %>
+		</div>
+		<div class="button-container">
+			<%= button_to 'Enviar', '', :class => 'button' %>
+			<div id="loading-newsletter"></div>
+		</div>
+	
+	<% end %>
+	
+	</div>
+</div>
