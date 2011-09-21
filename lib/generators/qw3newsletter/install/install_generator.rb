@@ -42,8 +42,18 @@ module Qw3newsletter
         end
       end
       
+      def insert_menu_calls
+        append_file "app/views/administrator/administradores/_menu_detalhes.html.erb" do
+          "<li>
+  <%= link_to '/administrator/newsletters/index', :class => \"newsletters-leftbar\" do %>
+    <span>Cadastros no Newsletter</span>
+  <% end %>
+</li>\n"
+        end
+      end
+      
       def create_files
-        copy_file 'public/javascripts/qw3newsletters.js', 'public/javascripts/qw3newsletters.js'
+        copy_file 'public/javascripts/qw3newsletters.js', 'public/javascripts/qw3/newsletters.js'
       end
       
     end
