@@ -34,6 +34,7 @@ module Qw3newsletter
     controller :newsletters do
       get 'newsletters/index' => :index
       delete 'newsletter/:id' => :destroy
+      get 'exportar_cadastros' => :exportar
     end
   end
   controller :newsletters do

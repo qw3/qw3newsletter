@@ -24,5 +24,9 @@ class Administrator::NewslettersController < Administrator::AdminController
       format.json  { render :json => {}, :status => :ok }
     end
   end
+  
+  def exportar
+    send_data Newsletter.csv, :filename => "clientes.txt"
+  end
 
 end
