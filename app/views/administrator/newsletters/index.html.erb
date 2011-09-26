@@ -7,7 +7,7 @@
 	</div>
 </div>
 
-<div class="inside filtros">
+<div id="filtros-newsletter" class="inside filtros">
     <%= form_tag('/administrator/newsletters/index', :remote => true, :method => :get) do %>
 	    <div class="field">
 		    <%= label_tag :nome %>
@@ -19,6 +19,7 @@
 	    </div>
 	    <%= submit_tag "Buscar" %>
     <% end %>
+    <div class="clear"></div>
 </div>
 
 <div class="inside" id="newsletters-index">
