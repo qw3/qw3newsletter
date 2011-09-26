@@ -6,8 +6,11 @@ class Administrator::NewslettersController < Administrator::AdminController
   def index
     @filtros = {}
     @filtros[:email] = params[:email]
-    conditions = (@filtros[:email].blank?) ? "" : "email LIKE '%#{@filtros[:email]}%'"
-    @newsletters = Newsletter.paginate :page => params[:page], :conditions => conditions
+    @filtros[:nome] = params[:nome]
+    conditions = []
+    conditions << "email LIKE '%#{@filtros[:email]}%'" unless @filtros[:email].blank?
+    conditions << "nome LIKE '%#{@filtros[:nome]}%'" unless @filtros[:nome].blank?
+    @newsletters = Newsletter.paginate :page => params[:page], :conditions => conditions.join( " AND " )
 
     respond_to do |format|
       format.html # index.html.erb

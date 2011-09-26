@@ -10,10 +10,14 @@
 <div class="inside filtros">
     <%= form_tag('/administrator/newsletters/index', :remote => true, :method => :get) do %>
 	    <div class="field">
+		    <%= label_tag :nome %>
+		    <%= text_field_tag :nome, @filtros[:nome] %>
+	    </div>
+	    <div class="field">
 		    <%= label_tag :email, 'E-mail' %>
 		    <%= text_field_tag :email, @filtros[:email] %>
-		    <%= submit_tag "Buscar" %>
 	    </div>
+	    <%= submit_tag "Buscar" %>
     <% end %>
 </div>
 
