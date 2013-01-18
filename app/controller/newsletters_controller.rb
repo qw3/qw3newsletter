@@ -7,7 +7,12 @@ class NewslettersController < FrontendController
     if @newsletter.save
       @mensagem = 'Seu cadastro foi feito com sucesso.'
     else
-      @mensagem = 'Por favor, preencha os campos corretamente.'
+      # Se email for duplicado, somente exibe uma mensagem dizendo que o cadastro foi efetuado corretamente
+      if @newsletter.errors.messages[:email].eql?( ["já está em uso"] ) and @newsletter.errors.messages[:nome].blank?
+        @mensagem = "Seu cadastro foi feito com sucesso."
+      else
+        @mensagem = 'Por favor, preencha os campos corretamente.'
+      end
     end
     respond_to do |format|
       format.js 
